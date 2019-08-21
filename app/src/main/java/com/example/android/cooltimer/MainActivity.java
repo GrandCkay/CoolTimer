@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         isTimerOn = true;
 
-        seekBar.setMax(120);
-        seekBar.setProgress(5);
+        seekBar.setMax(60);
+        seekBar.setProgress(30);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             seekBar.setEnabled(false);
             isTimerOn = false;
 
-            countDownTimer = new CountDownTimer(seekBar.getProgress() * 1000, 1000) {
+            countDownTimer = new CountDownTimer(seekBar.getProgress() * 1000, 100) {
                 @Override
                 public void onTick(long l) {
                     updateTimer(l);
@@ -142,10 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void resetTimer() {
         countDownTimer.cancel();
-        timeTextView.setText("00:30");
         buttonTime.setText("Start");
         seekBar.setEnabled(true);
         seekBar.setProgress(30);
+        timeTextView.setText("00:30");
         isTimerOn = true;
     }
 }
